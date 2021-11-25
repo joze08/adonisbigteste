@@ -13,7 +13,7 @@ export default class Message extends BaseModel {
   public texto: string
 
   @column()
-  public userId: string
+  public userId: number
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime

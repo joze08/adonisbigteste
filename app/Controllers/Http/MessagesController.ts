@@ -7,10 +7,10 @@ export default class MessagesController {
     return messages;
   }
 
-  public async store({ request, response }: HttpContextContract) {
+  public async store({ request, response, auth }: HttpContextContract) {
     try {
-      const data = request.only(["texto", "user_id"]);
-      const message = await Message.create(data);
+      const data = request.only(["texto"]);
+      const message = await Message.create({ ...data, userId: auth.user?.id });
       return message;
     } catch (error) {
       response.status(500).send("Erro ao enviar a mensagem");
