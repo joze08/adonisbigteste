@@ -4,7 +4,7 @@ import User from 'App/Models/User';
 export default class AuthController {
   public async register({ request }: HttpContextContract) {
     //try {
-    const data = request.only(["email", "password"]);
+    const data = request.only(["name", "email", "password"]);
     const user = await User.create(data);
     return user;
     /* } catch (error) {
